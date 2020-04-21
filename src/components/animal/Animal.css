@@ -16,3 +16,8 @@
 .animals {
     text-align: center;
 }
+
+.input--animalSearch {
+    margin-right: 200px;
+    width: 250px;
+}
