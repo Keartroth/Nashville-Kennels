@@ -13,7 +13,7 @@ export default (props) => {
             <h1>Employees</h1>
             <button onClick={() => props.history.push("/employees/create")}>
                 Add Employee
-        </button>
+            </button>
             <section className="employeeList">
                 {
                     employees.map(employee => {

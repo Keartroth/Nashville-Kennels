@@ -30,7 +30,7 @@ export const LocationProvider = (props) => {
     }
 
     /*
-        Load all animals when the component is mounted. Ensure that
+        Load all animals when the component is initialized. Ensure that
         an empty array is the second argument to avoid infinite loop.
     */
     useEffect(() => {
