@@ -18,7 +18,7 @@ export const AnimalProvider = (props) => {
             .then(setAnimals)
     }
 
-    const addAnimals = animal => {
+    const addAnimal = animal => {
         return fetch("http://localhost:8088/animals", {
             method: "POST",
             headers: {
@@ -30,7 +30,7 @@ export const AnimalProvider = (props) => {
     }
 
     /*
-        Load all animals when the component is mounted. Ensure that
+        Load all animals when the component is initialized. Ensure that
         an empty array is the second argument to avoid infinite loop.
     */
     useEffect(() => {
@@ -43,7 +43,7 @@ export const AnimalProvider = (props) => {
 
     return (
         <AnimalContext.Provider value={{
-            animals, addAnimals
+            animals, addAnimal
         }}>
             {props.children}
         </AnimalContext.Provider>

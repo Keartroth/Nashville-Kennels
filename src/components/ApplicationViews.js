@@ -5,6 +5,7 @@ import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { LocationProvider } from "./location/LocationProvider"
 import LocationList from "./location/LocationList"
+import AnimalForm from "./animal/AnimalForm"
 import AnimalList from "./animal/AnimalList"
 import CustomerList from "./customer/CustomerList"
 import EmployeeList from "./employee/EmployeeList"
@@ -24,9 +25,12 @@ export default (props) => {
                 {/* Render the animal list when http://localhost:3000/animals */}
                 <LocationProvider>
                     <CustomerProvider>
-                        <Route path="/animals">
-                            <AnimalList />
-                        </Route>
+                        <Route exact path="/animals" render={
+                            props => <AnimalList {...props} />
+                        } />
+                        <Route exact path="/animals/create" render={
+                        props => <AnimalForm {...props} />
+                        } />
                     </CustomerProvider>
                 </LocationProvider>
             </AnimalProvider>
@@ -46,7 +50,7 @@ export default (props) => {
                     } />
                     {/* Render the add employee form when http://localhost:3000/employees/create */}
                     <Route exact path="/employees/create" render={
-                        props => <EmployeeForm {...props}/>
+                        props => <EmployeeForm {...props} />
                     } />
                 </LocationProvider>
             </EmployeeProvider>

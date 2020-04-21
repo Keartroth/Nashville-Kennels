@@ -7,6 +7,7 @@ const Register = props => {
     const email = useRef()
     const password = useRef()
     const verifyPassword = useRef()
+    const address = useRef()
 
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
@@ -31,9 +32,10 @@ const Register = props => {
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
+                            name: `${firstName.current.value} ${lastName.current.value}`,
+                            address: address.current.value,
                             email: email.current.value,
-                            password: password.current.value,
-                            name: `${firstName.current.value} ${lastName.current.value}`
+                            password: password.current.value
                         })
                     })
                         .then(_ => _.json())
@@ -75,6 +77,14 @@ const Register = props => {
                         name="email"
                         className="form-control"
                         placeholder="Email address"
+                        required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputAddress"> Address </label>
+                    <input ref={address} type="text"
+                        name="address"
+                        className="form-control"
+                        placeholder="Address"
                         required />
                 </fieldset>
                 <fieldset>
