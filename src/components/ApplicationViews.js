@@ -8,6 +8,7 @@ import LocationList from "./location/LocationList"
 import AnimalList from "./animal/AnimalList"
 import CustomerList from "./customer/CustomerList"
 import EmployeeList from "./employee/EmployeeList"
+import EmployeeForm from "./employee/EmployeeForm"
 
 export default (props) => {
     return (
@@ -31,22 +32,24 @@ export default (props) => {
             </AnimalProvider>
 
             <CustomerProvider>
-            {/* Render the location list when http://localhost:3000/customers */}
+                {/* Render the customers list when http://localhost:3000/customers */}
                 <Route exact path="/customers">
                     <CustomerList />
                 </Route>
             </CustomerProvider>
 
             <EmployeeProvider>
-            {/* Render the location list when http://localhost:3000/employees */}
                 <LocationProvider>
-                    <Route exact path="/employees">
-                        <EmployeeList />
-                    </Route>
+                    {/* Render the employee list when http://localhost:3000/employees */}
+                    <Route exact path="/employees" render={
+                        props => <EmployeeList {...props} />
+                    } />
+                    {/* Render the add employee form when http://localhost:3000/employees/create */}
+                    <Route exact path="/employees/create" render={
+                        props => <EmployeeForm {...props}/>
+                    } />
                 </LocationProvider>
-            </ EmployeeProvider>
+            </EmployeeProvider>
         </>
     )
 }
-
-
