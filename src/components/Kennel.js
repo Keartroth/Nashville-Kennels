@@ -1,13 +1,16 @@
 import React from "react"
-import Animal from "./animal/Animal"
 import "./animal/Animal.css"
-import Employee from "./employee/Employee"
 import "./employee/Employee.css"
 import "./location/Location.css"
-import Customer from "./customer/Customer"
 import "./customer/Customer.css"
 import LocationList from "./location/LocationList"
 import { LocationProvider } from "./location/LocationProvider"
+import AnimalList from "./animal/AnimalList"
+import { AnimalProvider } from "./animal/AnimalProvider"
+import { CustomerProvider } from "./customer/CustomerProvider"
+import CustomerList from "./customer/CustomerList"
+import { EmployeeProvider } from "./employee/EmployeeProvider"
+import EmployeeList from "./employee/EmployeeList"
 
 export default () => (
     <>
@@ -20,16 +23,18 @@ export default () => (
 
         <h2>Animals</h2>
         <article className="animals">
-            <Animal />
-            <Animal />
-            <Animal />
+            <AnimalProvider>
+                <AnimalList />
+            </AnimalProvider>
         </article>
 
         <h2>Employee</h2>
         <article className="employees">
-            <Employee />
-            <Employee />
-            <Employee />
+            <EmployeeProvider>
+                <LocationProvider>
+                    <EmployeeList />
+                </LocationProvider>
+            </ EmployeeProvider>
         </article>
 
         <h2>Locations</h2>
@@ -41,10 +46,9 @@ export default () => (
 
         <h2>Customers</h2>
         <article className="customers">
-            <Customer />
-            <Customer />
-            <Customer />
-            <Customer />
+            <CustomerProvider>
+                <CustomerList />
+            </CustomerProvider>
         </article>
     </>
 )
