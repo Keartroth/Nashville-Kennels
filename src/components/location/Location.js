@@ -17,7 +17,7 @@ export default (props) => {
                 <div className="location__employeeTotal">
                     <label className="label--location">Total Employees:</label> {props.employeeArray.length}
                 </div>
-                <button onClick={toggle}>Details</button>
+                <Button onClick={toggle}>Details</Button>
             </section>
 
             <Modal isOpen={modal} toggle={toggle}>
@@ -28,13 +28,13 @@ export default (props) => {
                     <div className="location__animalList">
                         <label className="label--location">Animals:</label>
                         {
-                            props.animalArray.map(animal => <div>{animal.name}</div>)
+                            props.animalArray.map(animal => <div key={animal.id}>{animal.name}</div>)
                         }
                     </div>
                     <div className="location__employeeList">
                         <label className="label--location">Employees:</label>
                         {
-                            props.employeeArray.map(employee => <div>{employee.name}</div>)
+                            props.employeeArray.map(employee => <div key={employee.id}>{employee.name}</div>)
                         }
                     </div>
                 </ModalBody>

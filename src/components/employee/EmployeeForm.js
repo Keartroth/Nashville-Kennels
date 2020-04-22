@@ -1,4 +1,5 @@
 import React, { useContext, useRef } from "react"
+import { Button } from 'reactstrap'
 import { EmployeeContext } from "./EmployeeProvider"
 import { LocationContext } from "../location/LocationProvider"
 import "./Employee.css"
@@ -8,6 +9,7 @@ export default props => {
     const { locations } = useContext(LocationContext)
     const employeeName = useRef("")
     const employeeLocation = useRef(0)
+    const employeeAddress = useRef(0)
 
     const constructNewEmployee = () => {
         const locationId = parseInt(employeeLocation.current.value)
@@ -17,7 +19,8 @@ export default props => {
         } else {
             addEmployee({
                 name: employeeName.current.value,
-                locationId: locationId
+                locationId: locationId,
+                address: employeeAddress.current.value
             })
             props.history.push("/employees")
         }
@@ -27,7 +30,7 @@ export default props => {
         <form className="employeeForm">
             <h2 className="employeeForm__title">New Employee</h2>
             <div className="form-group">
-                <label htmlFor="employeeName">Employee name</label>
+                <label htmlFor="employeeName">Employee name: </label>
                 <input
                     type="text"
                     id="employeeName"
@@ -39,7 +42,19 @@ export default props => {
                 />
             </div>
             <div className="form-group">
-                <label htmlFor="location">Assign to location</label>
+                <label htmlFor="employeeAddress">Address: </label>
+                <input
+                    type="text"
+                    id="employeeAddress"
+                    ref={employeeAddress}
+                    required
+                    autoFocus
+                    className="form-control"
+                    placeholder="Employee address"
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="location">Assign to location: </label>
                 <select
                     defaultValue=""
                     name="location"
@@ -55,7 +70,7 @@ export default props => {
                     ))}
                 </select>
             </div>
-            <button type="submit"
+            <Button type="submit"
                 onClick={
                     evt => {
                         evt.preventDefault() // Prevent browser from submitting the form
@@ -64,7 +79,7 @@ export default props => {
                 }
                 className="btn btn-primary">
                 Save Employee
-            </button>
+            </Button>
         </form>
     )
 }

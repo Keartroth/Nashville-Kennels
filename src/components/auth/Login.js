@@ -1,4 +1,5 @@
 import React, { useRef } from "react"
+import { Button } from 'reactstrap'
 import { Link } from "react-router-dom";
 import "./Login.css"
 
@@ -75,9 +76,9 @@ const Login = props => {
                             required />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <Button type="submit">
                             Sign in
-                    </button>
+                    </Button>
                     </fieldset>
                 </form>
             </section>
