@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { AnimalContext } from "./AnimalProvider"
 import "./Animal.css"
 
-export default (props) => {
+export default props => {
     const { releaseAnimal } = useContext(AnimalContext)
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
@@ -13,7 +13,7 @@ export default (props) => {
         <>
             <section className="animal">
                 <h3 className="animal__name">{props.animal.name}</h3>
-                <button onClick={toggle}>Details</button>
+                <Button onClick={toggle}>Details</Button>
             </section>
 
             <Modal isOpen={modal} toggle={toggle}>
@@ -30,15 +30,21 @@ export default (props) => {
                     <div className="animal__owner">
                         <label className="label--animal">Customer:</label> {props.customer.name}
                     </div>
+                    <div className="animal__treatments">
+                        <label className="label--animal">Treatments:</label> {props.animal.treatment}
+                    </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="secondary" onClick={toggle}>Close</Button>
-                    <button className="btn--release"
+                    <Button onClick={() => {
+                        props.history.push(`/animals/edit/${props.animal.id}`)
+                    }}>Edit</Button>
+                    <Button className="btn--release"
                         onClick={() => {
                             releaseAnimal(chosenAnimalId)
                                 .then(toggle)
                         }}
-                    >Release</button>
+                    >Release</Button>
+                    <Button color="secondary" onClick={toggle}>Close</Button>
                 </ModalFooter>
             </Modal>
         </>

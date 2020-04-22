@@ -1,4 +1,5 @@
 import React, { useRef } from "react"
+import { Button } from 'reactstrap'
 import "./Login.css"
 
 const Register = props => {
@@ -104,9 +105,9 @@ const Register = props => {
                         required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit">
+                    <Button type="submit">
                         Sign in
-                    </button>
+                    </Button>
                 </fieldset>
             </form>
         </main>

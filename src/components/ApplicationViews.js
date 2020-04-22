@@ -26,13 +26,18 @@ export default (props) => {
             </LocationProvider>
 
             <AnimalProvider>
-                {/* Render the animal list when http://localhost:3000/animals */}
                 <LocationProvider>
                     <CustomerProvider>
+                        {/* Render the animal list when http://localhost:3000/animals */}
                         <Route exact path="/animals" render={
                             props => <AnimalList {...props} />
                         } />
+                        {/* Render the animal form when http://localhost:3000/animals/create */}
                         <Route exact path="/animals/create" render={
+                            props => <AnimalForm {...props} />
+                        } />
+                        {/* Render the animal edit form when http://localhost:3000/animals/edit */}
+                        <Route path="/animals/edit/:animalId" render={
                         props => <AnimalForm {...props} />
                         } />
                     </CustomerProvider>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import { Button } from 'reactstrap'
 import { AnimalContext } from "./AnimalProvider"
 import { LocationContext } from "../location/LocationProvider"
 import { CustomerContext } from "../customer/CustomerProvider"
@@ -25,9 +26,9 @@ export default (props) => {
         <article className="animals">
             <h1>Animals</h1>
             <AnimalSearch />
-            <button onClick={() => props.history.push("/animals/create")}>
+            <Button onClick={() => props.history.push("/animals/create")}>
                 Make Appointment
-            </button>
+            </Button>
             <section className="animalList">
                 {
                     filteredAnimals.map(animal => {
@@ -35,6 +36,7 @@ export default (props) => {
                         const clinic = locations.find(l => l.id === animal.locationId)
 
                         return <Animal key={animal.id}
+                            {...props}
                             location={clinic}
                             customer={owner}
                             animal={animal} />

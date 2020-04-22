@@ -10,7 +10,7 @@ export default ({ employee, location }) => {
         <>
             <section className="employee">
                 <h3 className="employee__name">{employee.name}</h3>
-                <button onClick={toggle}>Details</button>
+                <Button onClick={toggle}>Details</Button>
             </section>
 
             <Modal isOpen={modal} toggle={toggle}>

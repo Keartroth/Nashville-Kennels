@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { Button } from 'reactstrap'
 import { EmployeeContext } from "./EmployeeProvider"
 import { LocationContext } from "../location/LocationProvider"
 import Employee from "./Employee"
@@ -11,9 +12,9 @@ export default (props) => {
     return (
         <article className="employees">
             <h1>Employees</h1>
-            <button onClick={() => props.history.push("/employees/create")}>
+            <Button onClick={() => props.history.push("/employees/create")}>
                 Add Employee
-            </button>
+            </Button>
             <section className="employeeList">
                 {
                     employees.map(employee => {
